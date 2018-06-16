@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  scope '/api' do
+    post '/create_db/:db_name' => 'angra_services#create_db'
+    post '/save' => 'angra_services#save'
+    post '/lookup/:key' => 'angra_services#lookup'
+    post '/update/:key' => 'angra_services#update'
+    post '/delete/:key' => 'angra_services#delete'
+  end
 end
