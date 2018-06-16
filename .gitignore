@@ -1,2 +1,10 @@
 
 \.idea/
+
+angra-api/log/
+
+angra-api/tmp/pids/
+
+*.lock
+
+angra-api/\.byebug_history
