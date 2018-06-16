@@ -34,6 +34,15 @@ class AngraServicesController < ApplicationController
     end
   end
 
+  def delete
+    begin
+      response = @cursor.delete params['key']
+      render json: {db_message: response}, status: :ok
+    rescue RuntimeError => e
+      render json: {error: e}, status: :error
+    end
+  end
+
   private
 
   def connect_to_angra
