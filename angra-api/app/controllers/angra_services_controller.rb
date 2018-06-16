@@ -25,6 +25,15 @@ class AngraServicesController < ApplicationController
     end
   end
 
+  def lookup
+    begin
+      response = @cursor.look_up params['key']
+      render json: {db_message: response}, status: :ok
+    rescue RuntimeError => e
+      render json: {error: e}, status: :error
+    end
+  end
+
   private
 
   def connect_to_angra
