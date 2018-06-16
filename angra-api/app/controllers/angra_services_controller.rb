@@ -16,6 +16,15 @@ class AngraServicesController < ApplicationController
     end
   end
 
+  def update
+    begin
+      response = @cursor.update params['key'], document_param['document']
+      render json: {db_message: response}, status: :ok
+    rescue RuntimeError => e
+      render json: {error: e}, status: :error
+    end
+  end
+
   private
 
   def connect_to_angra
